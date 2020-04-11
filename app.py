@@ -27,6 +27,7 @@ def profile(username):
     """Retorna um usuario especifico filtrando pelo username"""
     user = db.users.get(username)
 
+# url_for cria url reversas para não ficara fixas
     if user:
         return f"""
             <h1>{user['name']}</h1>
@@ -38,7 +39,7 @@ def profile(username):
         return abort(404, "User not found")
 
 
-# Registro de rota usando chamada de método, automatiza o registro de url
+# Registro de rota usando chamada de método, automatiza o registro de url, endpoint serve para indicar um endpoint
 app.add_url_rule('/user/<username>/', view_func=profile, endpoint='user')
 
 # colocar sempre a barra no final, sempre que possivel
